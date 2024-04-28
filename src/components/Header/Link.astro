@@ -1,0 +1,24 @@
+---
+import cx from 'classnames';
+
+interface Props {
+  href: string;
+  text: string;
+}
+
+const { href, text } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const [, pathSegment] = currentPath.split('/');
+const currentPage = `/${pathSegment}`;
+
+const isActivePage = currentPage === href;
+---
+
+<a
+  class={cx(
+    'font-mono text-teal-950 hover:text-teal-900 transition-colors',
+    isActivePage && 'text-teal-800 border-b-2 border-teal-900'
+  )}
+  href={href}>{text}</a
+>

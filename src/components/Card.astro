@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+
+import thumbnail from '../assets/blog-1--thumb.webp';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  date: Date;
+}
+
+const { title, path, date } = Astro.props;
+---
+
+<a
+  href={`/blog/${path}`}
+  class="w-full cursor-pointer flex gap-2 rounded-md border border-zinc-400 overflow-hidden shadow-sm hover:bg-zinc-100 transition-colors"
+>
+  <Image src={thumbnail} alt="thumb" />
+
+  <div class="p-2 relative w-full">
+    <span class="text-sm text-zinc-800">{title}</span>
+
+    <div class="absolute left-2 bottom-1">
+      <span class="text-xs text-zinc-500 hidden sm:inline-block">2 min read</span>
+    </div>
+
+    <div class="absolute right-2 bottom-1">
+      <span class="text-xs text-zinc-500">
+        {
+          new Date(date).toLocaleDateString('lt', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })
+        }
+      </span>
+    </div>
+  </div>
+</a>

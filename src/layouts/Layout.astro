@@ -1,0 +1,19 @@
+---
+import Footer from '../components/Footer.astro';
+import Head from '../components/Head.astro';
+import Header from '../components/Header/Header.astro';
+---
+
+<!doctype html>
+<html class="bg-base-100 text-base-content overflow-y-scroll" lang="en">
+  <Head />
+  <body class="bg-zinc-200">
+    <div class="mx-auto flex min-h-screen max-w-4xl flex-col gap-9 px-10 py-8 md:gap-20 md:py-16">
+      <Header />
+      <main transition:animate="slide">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

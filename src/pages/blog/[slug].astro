@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout>
+  <article
+    class="prose prose-img:rounded-md prose-img:shadow-md prose-img:w-full prose-ul:mt-0 prose-img:my-4 mx-auto flex w-full max-w-prose flex-col"
+  >
+    <Image
+      width={960}
+      height={480}
+      src={post.data.heroImage}
+      alt={post.data.title}
+      class="rounded-xl shadow-md"
+    />
+    <h1 class="mb-0">
+      {post.data.title}
+    </h1>
+    <div class="divider m-0"></div>
+    <Content />
+  </article>
+</Layout>

@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+import Card from '../../components/Card.astro';
+
+const rawBlogPosts = await getCollection('blog');
+
+const sortedPostData = rawBlogPosts
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+  .map((post) => ({
+    slug: post.slug,
+    ...post.data,
+  }));
+---
+
+<Layout>
+  <section>
+    <ul>
+      {
+        sortedPostData.map((post) => (
+          <li class="mb-8">
+            <Card
+              title={post.title}
+              description={post.description}
+              path={post.slug}
+              date={post.pubDate}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
