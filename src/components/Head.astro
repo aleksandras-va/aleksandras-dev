@@ -1,6 +1,8 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE } from '../constants';
+
+console.log(new URL(SITE_IMAGE, Astro.url));
 ---
 
 <head>
@@ -28,5 +30,6 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE } from '../constants';
   <meta property="twitter:title" content={SITE_TITLE} />
   <meta property="twitter:description" content={SITE_DESCRIPTION} />
   <meta property="twitter:image" content={new URL(SITE_IMAGE, Astro.url)} />
+
   <ViewTransitions />
 </head>
