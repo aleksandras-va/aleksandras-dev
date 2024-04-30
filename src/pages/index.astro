@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Hero from '../components/Hero.astro';
+import Link from '../components/atoms/Link.astro';
 
 const rawBlogPosts = await getCollection('blog');
 
@@ -11,8 +12,7 @@ const sortedPostData = rawBlogPosts
   .map((post) => ({
     slug: post.slug,
     ...post.data,
-  }))
-  .splice(1, 2);
+  }));
 ---
 
 <Layout>
@@ -21,11 +21,13 @@ const sortedPostData = rawBlogPosts
     <article class="flex flex-col gap-8">
       <header class="flex w-full flex-row justify-between gap-2 items-center">
         <h3 class="text-lg">Posts</h3>
-        <a href="/blog" class="text-sm text-primary text-teal-950" rel="noreferrer">
+        <Link href="/blog" class="text-sm" rel="noreferrer">
           See all {rawBlogPosts.length}
-        </a>
+        </Link>
       </header>
-      <section class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <section
+        class:list={['grid grid-cols-1 gap-4', { 'sm:grid-cols-2': sortedPostData.length > 1 }]}
+      >
         {
           sortedPostData.map((post) => (
             <Card

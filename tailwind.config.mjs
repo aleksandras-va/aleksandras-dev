@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import defaultTheme from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
@@ -11,5 +12,12 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    plugin(({ addBase, theme }) => {
+      addBase({
+        html: { color: theme('colors.slate.900') },
+      });
+    }),
+  ],
 };

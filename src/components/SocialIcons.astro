@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import { GITHUB_LINK, LINKEDIN_LINK, INSTAGRAM_LINK } from '../constants';
+
+interface Props {
+  size: number;
+}
+
+const { size } = Astro.props;
+---
+
+<div class="flex gap-4 transition-colors">
+  <a href={GITHUB_LINK} target="_blank">
+    <Icon name="mdi:github" size={size} class="hover:text-teal-900" />
+  </a>
+
+  <a href={LINKEDIN_LINK} target="_blank">
+    <Icon name="mdi:linkedin" size={size} class="hover:text-teal-900" />
+  </a>
+
+  <a href={INSTAGRAM_LINK} target="_blank">
+    <Icon name="mdi:instagram" size={size} class="hover:text-teal-900" />
+  </a>
+</div>

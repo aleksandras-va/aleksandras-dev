@@ -1,9 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import emoji from '../assets/waving-emoji.webp';
+import Link from './atoms/Link.astro';
 ---
 
-<section class="py-24">
+<section class="h-[40vh] flex items-center">
   <div class="sm:w-7/12">
     <div class="flex gap-2 items-center mb-6">
       <div class="shrink-0">
@@ -13,13 +14,9 @@ import emoji from '../assets/waving-emoji.webp';
     </div>
 
     <h2 class="w-auto sm:w-[85%] md:w-[90%] leading-6">
-      A senior front-end engineer <a
-        href="https://nordsecurity.com/"
-        class="text-teal-900 hover:text-teal-950"
-        target="_blank"
-      >
+      A senior front-end engineer <Link href="https://nordsecurity.com/" target="_blank">
         @nordsecurity
-      </a> and a purpose driven nerd.
+      </Link> and a purpose driven nerd.
     </h2>
   </div>
 </section>
