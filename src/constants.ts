@@ -1,4 +1,4 @@
-export const SITE_TITLE = "Aleksandras's Blog";
+export const SITE_TITLE = 'JavaScript technology blog';
 export const SITE_DESCRIPTION = 'Javascript blog with the flavours of low-level concepts.';
 export const SITE_IMAGE = '/placeholder.webp';
 
