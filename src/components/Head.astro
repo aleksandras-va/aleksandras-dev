@@ -1,11 +1,12 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE } from '../constants';
+import GoogleTag from './GoogleTag.astro';
 
-console.log(new URL(SITE_IMAGE, Astro.url));
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_IMAGE } from '../constants';
 ---
 
 <head>
+  <GoogleTag />
   <!-- Global Metadata -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
